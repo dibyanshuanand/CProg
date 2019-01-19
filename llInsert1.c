@@ -8,7 +8,7 @@ struct node {
 };
 
 struct node* create(int num);
-void insert(struct node*, int, int);
+struct node* insert(struct node*, int, int);
 void display(struct node*, int);
 
 int main () {
@@ -25,7 +25,7 @@ int main () {
     scanf("%d", &dataS);
     printf("Enter the data to be entered : ");
     scanf("%d", &dataI);
-    insert(head, dataS, dataI);
+    head = insert(head, dataS, dataI);
     display(head, num_node);
     printf("\nEnd\n");
 
@@ -50,7 +50,7 @@ struct node* create(int num) {
     return first;
 }
 
-void insert(struct node *first, int num_search, int num_insert) {
+struct node* insert(struct node *first, int num_search, int num_insert) {
     struct node *new_node, *pre_ptr, *ptr, *loc = NULL;
     ptr = first;
 
@@ -59,14 +59,30 @@ void insert(struct node *first, int num_search, int num_insert) {
         first = new_node;
         new_node -> data = num_insert;
         new_node -> link = NULL;
-        return;
+        return first;
     }
     while (loc == NULL) {
         if (ptr -> data == num_search) {
-            loc = ptr;
-            new_node -> data = num_insert;
-            new_node -> link = ptr;
-            pre_ptr -> link = new_node;
+            if (ptr == first) {
+                loc = ptr;
+                first = new_node;
+                new_node -> data = num_insert;
+                new_node -> link = ptr;
+            }
+            // Below code to be used if data insert AFTER is used.
+
+            // else if (ptr -> link == NULL) {
+            //     ptr -> link = new_node;
+            //     loc = ptr;
+            //     new_node -> data = num_insert;
+            //     new_node -> link = NULL;
+            // }
+            else {
+                loc = ptr;
+                new_node -> data = num_insert;
+                new_node -> link = ptr;
+                pre_ptr -> link = new_node;
+            }
         }
         pre_ptr = ptr;
         if (ptr -> link == NULL)
@@ -76,7 +92,7 @@ void insert(struct node *first, int num_search, int num_insert) {
     if (loc == NULL)
         printf("Number not found\nInsert failed\n");
 
-    return;
+    return first;
 }
 
 void display (struct node *start, int num) {
