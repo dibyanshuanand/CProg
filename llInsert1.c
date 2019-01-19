@@ -29,6 +29,8 @@ int main () {
     display(head, num_node);
     printf("\nEnd\n");
 
+    // free(head);
+
     return 0;
 }
 
@@ -47,6 +49,9 @@ struct node* create(int num) {
         ptr = new_node;
     }
     ptr -> link = NULL;
+
+    // free(ptr);
+    // free(new_node);
     return first;
 }
 
@@ -91,6 +96,11 @@ struct node* insert(struct node *first, int num_search, int num_insert) {
     }
     if (loc == NULL)
         printf("Number not found\nInsert failed\n");
+    
+    // free(new_node);
+    // free(pre_ptr);
+    // free(ptr);
+    // free(loc);
 
     return first;
 }
@@ -108,6 +118,9 @@ void display (struct node *start, int num) {
         ptr = ptr -> link;
     }
     printf("%d\n", ptr -> data);
+
+    // free(start);
+    // free(ptr);
 
     return;
 }
