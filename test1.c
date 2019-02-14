@@ -1,16 +1,9 @@
 #include <stdio.h>
 
-int main() {
-	FILE *fpData, *fpOut;
-	int day, month, year;
-	fpData = fopen ("input.txt", "r");
-	fpOut = fopen ("output.txt", "w");
-	fscanf(fpData, "%d-%d-%d", &day, &month, &year);
-	fprintf(fpOut, "The day is %d\nThe month is %d\nThe year is %d\n", day, month, year);
-
-	fclose(fpData);
-	fclose(fpOut);
-
-
-	return 0;
+void main () {
+	int i;
+	int arr[5] = {1, 2, 3, 4, 5};
+	for (i = 0 ; i < 5 ; ++i)
+		printf("%d ", arr[i]);
+	return;
 }
