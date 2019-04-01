@@ -1,9 +1,14 @@
 #include <stdio.h>
+#include <string.h>
 
 void main () {
-	int i;
-	int arr[5] = {1, 2, 3, 4, 5};
-	for (i = 0 ; i < 5 ; ++i)
-		printf("%d ", arr[i]);
+	char s[2] = {'h', '\0'};
+	char ch = 'p';
+	char s1[2] = {ch, '\0'};
+	strcat(s, s1);
+
+	printf("\n%s\n%s", s, s1);
+	printf("\n%s", s1);
+
 	return;
 }
