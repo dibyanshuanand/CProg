@@ -1,29 +1,51 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main (void) {
-    int m, n , t;
+    int m, n ,p,  t;
 
-    scanf("%d %d %d", &m, &n, &t);
+    printf("Enter order of 1st matrix : R x C : ");
+    scanf("%d %d", &m, &n);
+
+    printf("Enter order of 2nd matrix : R x C : ");
+    scanf("%d %d", &p, &t);
+
+    if (p != n) {
+        printf("\nMatrix not compatible for multiplication\n");
+        return 0;
+    }
 
     int i , j , l = 1, k = 1 , r , s;
     int a[m][n];
     int b[n][t], res[m][t];
 
-    for (i = 0 ; i < m ; ++i) {
-        a[i][0] = 1;
+    // for (i = 0 ; i < m ; ++i) {
+    //     a[i][0] = 1;
 
-        for (j = 1 ; j < n ; ++j)
-            a[i][j] = a[i][j-1] + k;
+    //     for (j = 1 ; j < n ; ++j)
+    //         a[i][j] = a[i][j-1] + k;
         
-        k++;
+    //     k++;
+    // }
+
+    // for (i = 0 ; i < n ; i++) {
+    //     b[i][0] = 2;
+    //     for (j = 1 ; j < t ; ++j)
+    //         b[i][j] = b[i][j-1] + l;
+        
+    //     l++;
+    // }
+
+    printf("\nEnter data for matrix 1 : \n");
+    for (int i = 0 ; i < m ; ++i) {
+        for (int j = 0 ; j < n ; ++j)
+            scanf("%d", &a[i][j]);
     }
 
-    for (i = 0 ; i < n ; i++) {
-        b[i][0] = 2;
-        for (j = 1 ; j < t ; ++j)
-            b[i][j] = b[i][j-1] + l;
-        
-        l++;
+    printf("\nEnter data for 2nd matrix : \n");
+    for (int i = 0 ; i < n ; ++i) {
+        for (int j = 0 ; j < t ; ++j)
+            scanf("%d", &b[i][j]);
     }
 
     for (i = 0 ; i < m ; ++i) {
@@ -39,10 +61,11 @@ int main (void) {
         }
     }
 
+    printf("\nThe resultant matrix is :\n");
+
     for (i = 0 ; i < m ; ++i) {
         for (j = 0 ; j < t ; ++j)
-            printf ("%d \t", res[i][j]);
-        
+            printf ("%d ", res[i][j]);
         printf("\n");
     }
 
