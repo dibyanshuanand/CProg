@@ -35,7 +35,8 @@ void sort(int low, int high) {
       sort(low, mid);
       sort(mid+1, high);
       merging(low, mid, high);
-   } else {
+   } 
+   else {
       return;
    }
 }
