@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <string.h>
+#define n 1072
+
+int a[1];
 
 void main () {
-	char s[2] = {'h', '\0'};
-	char ch = 'p';
-	char s1[2] = {ch, '\0'};
-	strcat(s, s1);
-
-	printf("\n%s\n%s", s, s1);
-	printf("\n%s", s1);
+	// int n;
+	for (int i = 0 ; i < n ; i++) {
+		a[i] = i;
+		printf("%d ", a[i]);
+	}
 
 	return;
 }
